@@ -1,0 +1,35 @@
+---
+- name: Install and configure Apache
+  hosts: all
+  become: yes
+  gather_facts: yes
+
+  tasks:
+    - name: Include OS-specific variables
+      include_vars: "{{ item }}"
+      loop:
+        - "vars/{{ ansible_facts['os_family'] }}.yml"
+
+    - name: Install Apache
+      package:
+        name: "{{ apache_package }}"
+        state: present
+
+    - name: Ensure Apache service is enabled and started
+      service:
+        name: "{{ apache_service }}"
+        state: started
+        enabled: yes
+
+    - name: Configure Apache to listen on ports 80 and 443
+      lineinfile:
+        path: "{{ apache_config_path }}"
+        line: "Listen {{ item }}"
+      loop:
+        - 80
+        - 443
+
+    - name: Reload Apache service
+      service:
+        name: "{{ apache_service }}"
+        state: reloaded
