@@ -10,9 +10,14 @@ This Ansible playbook installs and configures the Apache web server on target ho
 ## Directory Structure
 
 .
+
 ├── install_apache.yml
+
 └── vars
+
 ├── Debian.yml
+
+
 └── RedHat.yml
 
 
@@ -44,10 +49,13 @@ Example inventory file (`inventory.ini`):
 
 Example inventory file (`inventory.ini`):
 
+```yaml
 [web_servers]
-web_server_1.example.com
-web_server_2.example.com
 
+web_server_1.example.com
+
+web_server_2.example.com
+```
 
 3. Run the playbook using the following command:
 
