@@ -9,7 +9,7 @@ This Ansible playbook installs and configures the Apache web server on target ho
 
 ## Directory Structure
 
-.
+```
 
 ├── install_apache.yml
 
@@ -19,13 +19,21 @@ This Ansible playbook installs and configures the Apache web server on target ho
 
 
 └── RedHat.yml
+```
 
 
+
+```
 
 - `install_apache.yml`: The main Ansible playbook file.
+
 - `vars/`: Directory containing OS-specific variables.
+
   - `Debian.yml`: Variables specific to Debian-based systems.
+  
   - `RedHat.yml`: Variables specific to Red Hat-based systems.
+```
+
 
 ## Usage
 
